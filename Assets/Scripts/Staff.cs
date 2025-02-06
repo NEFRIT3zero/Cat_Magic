@@ -11,14 +11,19 @@ public class Staff : MonoBehaviour
 
     private float check;
 
+    private Camera cam;
     private float timeBtwCast;
     public float startTimeBtwCast;
+
+    private void Start()
+    {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //Floating();
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 difference = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotZ + offset);
 

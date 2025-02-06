@@ -7,6 +7,7 @@ public class FireBall : MonoBehaviour
     public float speed;
     public float lifetime;
     public float damage;
+    public Rigidbody2D rb;
 
     private bool expload;
     //private Collider2D collider;
@@ -15,23 +16,23 @@ public class FireBall : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        rb.velocity = transform.up * speed;
     }
     void Update()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
         lifetime -= Time.deltaTime;
         if ( lifetime <= 0)
         {
             Destroy(gameObject);
         }
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Wall") 
         {
-            speed = 0f;
+            rb.velocity = Vector2.zero;
             anim.SetTrigger("Explode");
             if (!expload)
             {
@@ -44,7 +45,7 @@ public class FireBall : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.GetComponent<Base_Enemy>().TakeDamage(damage);
-            speed = 0f;
+            rb.velocity = Vector2.zero;
             anim.SetTrigger("Explode");
             if (!expload)
             {

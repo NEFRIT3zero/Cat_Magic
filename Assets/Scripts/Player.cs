@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
 
     private bool canMove = true;
-    private bool left = false;
+    public bool left = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         Move();
         if (moveVelocity != Vector2.zero) { anim.SetBool("IsRun", true); } else { anim.SetBool("IsRun", false); }
 
-        }
+    }
 
     private void FixedUpdate()
     {
@@ -54,8 +54,8 @@ public class Player : MonoBehaviour
             else if (moveInput.x < 0 && !left)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-                staff.offset = 180;
                 left = true;
+                staff.offset = 180;
             }
             moveVelocity = moveInput.normalized * speed;
         }

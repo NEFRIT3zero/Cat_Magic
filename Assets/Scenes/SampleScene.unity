@@ -248,6 +248,7 @@ MonoBehaviour:
   spell: {fileID: 3505550017232118485, guid: 6443661ae93342341ba00970c00de8c2, type: 3}
   staff: {fileID: 2019935532}
   player: {fileID: 71210986}
+  left: 0
 --- !u!50 &296204302
 Rigidbody2D:
   serializedVersion: 4
@@ -285,7 +286,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.98, y: -0.87, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1330527666}
